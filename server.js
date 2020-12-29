@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const app = express();
 // import routes
-const queueRoutes = require('./routes/auth');
+const queueRoutes = require('./routes/queueRoutes');
 
 // app middlewares
 app.use(morgan('dev'));
@@ -16,10 +16,8 @@ app.use(bodyParser.json({ limit: '5mb', type: 'application/json' }));
 app.use(cors({ origin: process.env.CLIENT_URL }));
 
 // middlewares
-app.use('/api', authRoutes);
-app.use('/api', userRoutes);
-app.use('/api', categoryRoutes);
-app.use('/api', linkRoutes);
+app.use('/api', queueRoutes);
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => console.log(`API is running on port ${port}`));
+
