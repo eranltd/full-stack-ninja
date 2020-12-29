@@ -1,3 +1,8 @@
+## Overview
+
+simple node.js app using Express.js to mockup a message queue
+
+
 
 ## Running the sample
 
@@ -6,7 +11,7 @@ node server.js
 
 ```
 
-1.1 Call using Postman:
+## Call using Postman:
 
 __GET NEXT MSG FROM QUEUE__ (using GET)
 ```
@@ -16,7 +21,7 @@ http://localhost:8000/api/<queue_name>?timeout=100
 
 __SAVE NEXT MSG TO QUEUE__ (using POST)
 ```
-http://localhost:8000/api/eran
+http://localhost:8000/api/<queue_name>
 ```
 
 with body of:
