@@ -8,6 +8,7 @@ const { getNextQueueMessage, appendNextQueueMessage } = require('../helper/queue
 exports.getQueue = (req, res) => {
     console.log(req.params)
     const { queue_name, timeout } = req.params;
+
     console.log(`Getting next message for ${queue_name}`)
 
     let nextMSG = undefined;
@@ -20,7 +21,7 @@ exports.getQueue = (req, res) => {
 
         seconds--;
         nextMSG = getNextQueueMessage(queue_name)
-        if ( seconds === 0) {
+        if ( seconds <= 0) {
                 res.status(204).json({from_queue:queue_name,"msg":"no messages found"}) //return 204, 
                 clearInterval(tryfetchMessage);
         }
